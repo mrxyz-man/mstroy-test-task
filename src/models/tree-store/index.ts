@@ -21,18 +21,14 @@ export class TreeStore {
   }
 
   getChildren(id: Item['id']) {
-    if (!['string', 'number'].includes(typeof id)) return [];
-
     const item = this.#cachedItemsById.get(id);
 
     if (!item) return [];
 
-    return this.#cachedItemsByParent.get(item.id);
+    return this.#cachedItemsByParent.get(item.id) ?? [];
   }
 
   getAllChildren(id: Item['id']) {
-    if (!['string', 'number'].includes(typeof id)) return [];
-
     const allChildren: Item[] = [];
     const cachedItemsByParent = this.#cachedItemsByParent;
     const recursiveSearch = function(items: Item[]) {
@@ -96,6 +92,10 @@ export class TreeStore {
     const itemIndex = this.#items.findIndex((item) => item.id === id);
     const cachedItem = this.#cachedItemsById.get(id);
 
+    if (!cachedItem || itemIndex === -1) {
+      return;
+    }
+
     this.#items.splice(itemIndex, 1);
     this.#cachedItemsById.delete(id);
 
@@ -104,7 +104,9 @@ export class TreeStore {
         .get(cachedItem.parent)
         .findIndex((targetItem: Item) => targetItem.id === id)
 
-      this.#cachedItemsByParent.get(cachedItem.parent).splice(targetItemIndex, 1);
+      if (targetItemIndex !== -1) {
+        this.#cachedItemsByParent.get(cachedItem.parent).splice(targetItemIndex, 1);
+      }
     }
   }
 

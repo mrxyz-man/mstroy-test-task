@@ -1,18 +1,14 @@
 ﻿<template>
-  <div
-    style="height: 100%;"
-  >
-    <AgGridVue
-      :row-data="rowData"
-      :column-defs="columnDefs"
-      :tree-data="true"
-      :get-data-path="getDataPath"
-      :group-default-expanded="0"
-      tree-data-display-type="custom"
-      style="width: 100%; height: 100vh"
-      @row-group-opened="refreshRowNumbers"
-    />
-  </div>
+  <AgGridVue
+    :row-data="rowData"
+    :column-defs="columnDefs"
+    :get-data-path="getDataPath"
+    :group-default-expanded="0"
+    :tree-data="true"
+    class="tree-store"
+    tree-data-display-type="custom"
+    @row-group-opened="refreshRowNumbers"
+  />
 </template>
 
 <script setup lang="ts">
@@ -97,3 +93,10 @@ const refreshRowNumbers = (event: ModelUpdatedEvent<Item> | RowGroupOpenedEvent<
   });
 }
 </script>
+
+<style lang="scss" scoped>
+.tree-store {
+  width: 100%;
+  height: 100dvh;
+}
+</style>
