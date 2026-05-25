@@ -1,0 +1,34 @@
+{
+  "name": "msstory-test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:safe": "sh nvm-use.sh && vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "ag-grid-community": "^35.3.0",
+    "ag-grid-enterprise": "^35.3.0",
+    "ag-grid-vue3": "^35.3.0",
+    "vue": "^3.5.34"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.12.4",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-vue": "^10.5.1",
+    "sass-embedded": "^1.100.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^8.0.12",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-tsc": "^3.2.8"
+  }
+}
