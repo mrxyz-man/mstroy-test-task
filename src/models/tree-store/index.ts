@@ -1,5 +1,5 @@
 import type { Item } from '../item/types';
-import { useCache } from '../../utils/useCache';
+import { useCache } from '@/utils/useCache';
 
 export class TreeStore {
   #items: Item[] = [];
